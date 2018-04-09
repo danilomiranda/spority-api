@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 import Albums from './pages/albums';
 
 class App extends React.Component {
+  componentWillUnmount() {
+    localStorage.removeItem('token')
+  }
   render() {
     return <Albums />
   }
