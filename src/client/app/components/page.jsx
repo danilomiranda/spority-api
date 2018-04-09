@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './header'
-import Meta from './meta'
+import Header from './header.jsx'
+import Meta from './meta.jsx'
 
 export default ({ children }) => (
   <div className='main'>

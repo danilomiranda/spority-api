@@ -1,6 +1,7 @@
 import React from 'react'
-import Page from '../components/page.jsx'
-import InputSearch from '../components/inputSearch'
+import Page from '../components/page'
+import Input from '../components/input'
+import Modal from '../components/modal'
 
 export default class extends React.Component {
     constructor(props) {
@@ -12,8 +13,10 @@ export default class extends React.Component {
 
     render() {
         return <Page>
-            <InputSearch />
-
+            <Input placeholder="Comece a escrever..." label="Busque por artistas, álbums ou músicas" />
+            <div className="page__section">
+                <Modal />
+            </div>
         </Page>
     }
 }
