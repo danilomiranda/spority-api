@@ -3,8 +3,10 @@ import { render } from 'react-dom';
 
 class App extends React.Component {
   render() {
-    return <p> Initial Config</p>;
+    return <p> Testing hot reloading</p>;
   }
 }
 
 render(<App />, document.getElementById('app'));
+
+module.hot.accept();
