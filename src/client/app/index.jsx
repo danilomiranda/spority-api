@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Albums from './pages/albums';
 
 class App extends React.Component {
   render() {
-    return <p> Testing hot reloading</p>;
+    return <Albums />
   }
 }
 
