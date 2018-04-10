@@ -1,21 +1,21 @@
-import React from "react";
-import { Debounce } from "react-throttle";
+import React from 'react'
+import { Debounce } from 'react-throttle'
 
 export default ({ placeholder, label, change }) => (
   <div>
-    <div className="page__section">
-      <label className="field field_type2">
-        <Debounce time="400" handler="onChange">
+    <div className='page__section'>
+      <label className='field field_type2'>
+        <Debounce time='400' handler='onChange'>
           <input
-            className="field__input"
+            className='field__input'
             placeholder={placeholder}
             onChange={e => {
-              change(e.currentTarget.value);
+              change(e.currentTarget.value)
             }}
           />
         </Debounce>
-        <span className="field__label-wrap">
-          <span className="field__label">{label}</span>
+        <span className='field__label-wrap'>
+          <span className='field__label'>{label}</span>
         </span>
       </label>
     </div>
@@ -154,4 +154,4 @@ export default ({ placeholder, label, change }) => (
       }
     `}</style>
   </div>
-);
+)

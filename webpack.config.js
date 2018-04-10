@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack')
+var path = require('path')
 
-var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var BUILD_DIR = path.resolve(__dirname, 'src/client/public')
+var APP_DIR = path.resolve(__dirname, 'src/client/app')
 
 module.exports = {
   mode: 'development',
@@ -34,4 +34,4 @@ module.exports = {
     contentBase: __dirname + '/src/client',
     hot: true
   }
-};
+}

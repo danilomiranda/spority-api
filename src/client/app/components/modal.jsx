@@ -1,52 +1,51 @@
-import React from "react";
+import React from 'react'
 
-import Input from "./input";
+import Input from './input'
 
 export default class extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       show: true
-    };
-    this.change = this.change.bind(this);
+    }
+    this.change = this.change.bind(this)
   }
 
-  toggleModal() {
+  toggleModal () {
     this.setState(prevState => {
-      return { show: !prevState.show };
-    });
+      return { show: !prevState.show }
+    })
   }
 
-  change(token) {
-    console.log(token)
-    localStorage.setItem('token', token);
+  change (token) {
+    localStorage.setItem('token', token)
     this.setState({
       show: false
-    });
+    })
   }
 
-  componentDidMount() {
-    const token = localStorage.getItem("token");
+  componentDidMount () {
+    const token = localStorage.getItem('token')
     if (!token) {
       this.setState({
         show: true
-      });
+      })
     }
   }
 
-  render() {
+  render () {
     return (
-      <div className={`modal ${this.state.show ? "show" : ""}`}>
-        <div className="modal-header">
-          <span className="close" onClick={() => this.toggleModal()}>
+      <div className={`modal ${this.state.show ? 'show' : ''}`}>
+        <div className='modal-header'>
+          <span className='close' onClick={() => this.toggleModal()}>
             &times;
           </span>
         </div>
-        <div className="modal-content">
+        <div className='modal-content'>
           <Input
-            id="token-spotify"
-            placeholder="Comece a escrever..."
-            label="Informe o Token do Spotify"
+            id='token-spotify'
+            placeholder='Comece a escrever...'
+            label='Informe o Token do Spotify'
             change={this.change}
           />
         </div>
@@ -96,6 +95,6 @@ export default class extends React.Component {
       cursor: pointer;
       `}</style>
       </div>
-    );
+    )
   }
 }

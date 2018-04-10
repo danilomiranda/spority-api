@@ -1,16 +1,16 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Albums from './pages/albums';
+import React from 'react'
+import { render } from 'react-dom'
+import Albums from './pages/albums'
 
 class App extends React.Component {
-  componentWillUnmount() {
+  componentWillUnmount () {
     localStorage.removeItem('token')
   }
-  render() {
+  render () {
     return <Albums />
   }
 }
 
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById('app'))
 
-module.hot.accept();
+module.hot.accept()
