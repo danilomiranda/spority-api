@@ -10,7 +10,7 @@ import createHistory from 'history/createBrowserHistory'
 import reducers from './reducers'
 import Albums from './pages/albums'
 
-class App extends React.Component {
+class Index extends React.Component {
   componentWillUnmount () {
     localStorage.removeItem('token')
   }
@@ -31,7 +31,7 @@ const store = createStore(
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <Index />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('app')

@@ -49,7 +49,7 @@ export default class extends React.Component {
             change={this.change}
           />
         </div>
-        <style jsx>{`
+        <style jsx="true">{`
     .modal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */

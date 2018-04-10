@@ -19,7 +19,7 @@ export default ({ placeholder, label, change }) => (
         </span>
       </label>
     </div>
-    <style jsx>{`
+    <style  jsx="true" >{`
       .page__section:not(:first-child) {
         margin-top: 7rem;
       }

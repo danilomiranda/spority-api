@@ -7,7 +7,7 @@ export default () => (
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta charSet='utf-8' />
     </Head>
-    <style jsx global>{`
+    <style  jsx="true" >{`
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         background: #eee;

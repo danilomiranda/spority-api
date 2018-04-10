@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ROOT_URL } from '../actions/urls'
+const ROOT_URL = 'https://api.spotify.com'
 
 function getHeaders () {
   const token = localStorage.getItem('token')
@@ -18,7 +18,7 @@ function getHeaders () {
 export const get = (url, params) => {
   return axios({
     method: 'get',
-    baseURL: `${ROOT_URL}/api`,
+    baseURL: `${ROOT_URL}/v1`,
     url: url,
     params: params,
     headers: getHeaders()
@@ -28,7 +28,7 @@ export const get = (url, params) => {
 export const post = (url, params) => {
   return axios({
     method: 'post',
-    baseURL: `${ROOT_URL}/api`,
+    baseURL: `${ROOT_URL}/v1`,
     url: url,
     data: params,
     headers: getHeaders()
@@ -38,7 +38,7 @@ export const post = (url, params) => {
 export const put = (url, params) => {
   return axios({
     method: 'put',
-    baseURL: `${ROOT_URL}/api`,
+    baseURL: `${ROOT_URL}/v1`,
     url: url,
     data: params,
     headers: getHeaders()
