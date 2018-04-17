@@ -1,13 +1,11 @@
-import {
-  SEARCH_ERROR,
-  SEARCH_SUCCESS,
-  LOADING
-} from '../actions/types'
+import { SEARCH_ERROR, SEARCH_SUCCESS, LOADING } from '../actions/types'
 
 const INITIAL_STATE = {
   error: '',
   loading: false,
-  albums: []
+  albums: [],
+  query: '',
+  token: ''
 }
 
 export default function (state = INITIAL_STATE, action) {
@@ -16,9 +14,15 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, loading: true }
     case SEARCH_SUCCESS:
       console.log('reducer ->', action)
-      return { ...state, error: '', albums: action.payload.albums, loading: false }
+      return {
+        ...state,
+        error: '',
+        albums: action.payload.albums,
+        query: action.query,
+        loading: false
+      }
     case SEARCH_ERROR:
-      return { ...state, error: action.payload, loading: false }
+      return { ...state, error: action.payload, token: '', loading: false }
     default:
       return state
   }

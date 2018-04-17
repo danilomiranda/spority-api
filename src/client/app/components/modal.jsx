@@ -2,7 +2,7 @@ import React from 'react'
 
 import Input from './input'
 
-export default class extends React.Component {
+class Modal extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -18,14 +18,18 @@ export default class extends React.Component {
   }
 
   change (token) {
+    /* eslint-disable no-undef */
     localStorage.setItem('token', token)
+    /* eslint-enable no-undef */
     this.setState({
       show: false
     })
   }
 
   componentDidMount () {
+    /* eslint-disable no-undef */
     const token = localStorage.getItem('token')
+    /* eslint-enable no-undef */
     if (!token) {
       this.setState({
         show: true
@@ -49,7 +53,7 @@ export default class extends React.Component {
             change={this.change}
           />
         </div>
-        <style jsx="true">{`
+        <style jsx='true'>{`
     .modal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
@@ -98,3 +102,12 @@ export default class extends React.Component {
     )
   }
 }
+
+
+const mapStateToProps = ({SearchReducer}) => {
+  return {
+    token: SearchReducer.token
+  }
+}
+
+export default connect(mapStateToProps, { search })(Modal)

@@ -1,1 +1,1 @@
-export * from './searchAction'
+export { search } from './searchAction'
