@@ -3,7 +3,9 @@ import axios from 'axios'
 const ROOT_URL = 'https://api.spotify.com'
 
 function getHeaders () {
+  /* eslint-disable no-undef */
   const token = localStorage.getItem('token')
+  /* eslint-enable no-undef */
   const headers = {
     'Content-Type': 'application/json;charset=UTF-8'
   }

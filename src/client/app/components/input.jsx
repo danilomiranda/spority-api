@@ -19,9 +19,9 @@ export default ({ placeholder, label, change }) => (
         </span>
       </label>
     </div>
-    <style  jsx="true" >{`
+    <style jsx='true' >{`
       .page__section:not(:first-child) {
-        margin-top: 7rem;
+        margin-top: 4rem;
       }
 
       .field {

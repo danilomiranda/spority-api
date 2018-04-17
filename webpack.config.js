@@ -31,6 +31,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
+    /* eslint-disable no-path-concat */
     contentBase: __dirname + '/src/client',
     hot: true
   }

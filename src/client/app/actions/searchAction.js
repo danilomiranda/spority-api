@@ -1,4 +1,3 @@
-/* global localStorage */
 import { get } from '../lib/Http'
 import {
   SEARCH_SUCCESS,
@@ -6,7 +5,7 @@ import {
   LOADING
 } from './types'
 
-export const search = query => {
+const search = query => {
   return function (dispatch) {
     dispatch({ type: LOADING })
     const params = {
@@ -15,14 +14,18 @@ export const search = query => {
     }
     get('/search', params).then(response => {
       console.log(response)
-      dispatch({ type: SEARCH_SUCCESS, payload: response.data })
+      dispatch({ type: SEARCH_SUCCESS, payload: response.data, query })
     })
       .catch((e) => {
         if (e.status === 401) {
+          /* eslint-disable no-undef */
           localStorage.removeItem('token')
+          /* eslint-enable no-undef */
         }
         console.log('ERROR = ', e)
         dispatch({ type: SEARCH_ERROR })
       })
   }
 }
+
+export { search }

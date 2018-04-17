@@ -11,7 +11,7 @@ export default ({ children }) => (
       {children}
     </div>
 
-    <style  jsx="true" >{`
+    <style jsx='true' >{`
       body {
         background: #000;
       }

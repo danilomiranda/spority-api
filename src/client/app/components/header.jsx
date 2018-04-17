@@ -3,7 +3,7 @@ export default () => (
   <header className='flex-container'>
     <img className='logo' src='public/logo.png' alt='Spotify' />
 
-    <style  jsx="true" >{`
+    <style jsx='true' >{`
       header {
         background: #000;
         display: flex;
