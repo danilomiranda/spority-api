@@ -1,21 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Col from '../components/col'
 
-const Card = ({ _id, name, images }) => (
-  <div className='col-2'>
+const Card = ({ id, name, images }) => (
+  <Col size='2'>
     <div className='media-object'>
       <div className='media-object-hoverable'>
         <div className='image-wrapper'>
-          <img className='cover-art-image' src={images[1].url} />
+          {images[1] ? (
+            <img className='cover-art-image' src={images[1].url} />
+          ) : (
+            <img className='cover-art-image' src='http://via.placeholder.com/188x188' />
+          )}
         </div>
         <div className='mo-info'>
           <div className='react-contextmenu-wrapper'>
-            <a
+            <Link
+              to={`/album/${id}`}
               className='mo-info-name'
               title='Brazilian Pop'
-              href='/album/4liTLZ1iNeBFeCWm0GFbGG'
             >
               {name}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -26,17 +32,6 @@ const Card = ({ _id, name, images }) => (
       </div>
     </div>
     <style jsx='true'>{`
-      .col-2 {
-        position: relative;
-        width: 100%;
-        min-height: 1px;
-        padding-right: 15px;
-        padding-left: 15px;
-        max-width: none;
-        -ms-flex: 0 0 16.666667%;
-        flex: 0 0 16.666667%;
-        max-width: 16.666667%;
-      }
       .media-object {
         position: relative;
         padding-bottom: 2.5em;
@@ -88,7 +83,7 @@ const Card = ({ _id, name, images }) => (
         border-bottom-width: 0;
       }
     `}</style>
-  </div>
+  </Col>
 )
 
 export default Card

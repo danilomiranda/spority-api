@@ -1,7 +1,7 @@
 import React from 'react'
 export default () => (
   <header className='flex-container'>
-    <img className='logo' src='public/logo.png' alt='Spotify' />
+    <img className='logo' src='/public/logo.png' alt='Spotify' />
 
     <style jsx='true' >{`
       header {

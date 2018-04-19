@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import Input from './input'
-import {setToken} from '../actions/tokenAction'
+import {setToken} from '../actions'
 
 class Modal extends React.Component {
   constructor (props) {
@@ -54,7 +54,7 @@ class Modal extends React.Component {
       z-index: 1; /* Sit on top */
       padding-top: 100px; /* Location of the box */
       left: 0;
-      top: 0;
+      top: 30%;
       width: 100%; /* Full width */
       height: 100%; /* Full height */
       overflow: auto; /* Enable scroll if needed */

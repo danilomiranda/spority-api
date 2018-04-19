@@ -21,7 +21,6 @@ const search = ({query, token}) => {
       dispatch({ type: SEARCH_SUCCESS, payload: response.data, query })
     })
       .catch((e) => {
-        console.log(e)
         if (e.response.data.error.status === 401) {
           dispatch({ type: EXPIRED_TOKEN })
         }

@@ -5,10 +5,11 @@ import ReactLoading from 'react-loading'
 import Page from '../components/page'
 import Input from '../components/input'
 import Modal from '../components/modal'
+import Row from '../components/row'
 import { search, expiredToken } from '../actions'
 import Card from '../components/card'
 
-class Albums extends React.Component {
+class Search extends React.Component {
   constructor (props) {
     super(props)
     this.change = this.change.bind(this)
@@ -27,8 +28,8 @@ class Albums extends React.Component {
           change={this.change}
         />
         <div className='page__section'>
-          <div className='row'>
-            {this.props.loading ? (
+          <Row>
+            {this.props.loading && !this.props.albums ? (
               <ReactLoading type='bubbles' color='#828282' />
             ) : ''}
             {this.props.error && this.props.query ? (
@@ -45,36 +46,17 @@ class Albums extends React.Component {
                 <h2>{`Nenhum Resultado encontrado`}</h2>
               </div>
             )}
-          </div>
-          <div className='row'>
+          </Row>
+          <Row>
             {this.props.albums && this.props.albums.items ? this.props.albums.items.map(item => (
               <Card key={item.id} {...item} />
             )) : ''}
-          </div>
+          </Row>
         </div>
         <div className='page__section'>
           <Modal />
         </div>
         <style jsx='true'>{`
-          .row {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-left: -8px;
-            margin-right: -8px;
-            margin-bottom: 30px;
-          }
-          .col-12 {
-            position: relative;
-            width: 100%;
-            min-height: 1px;
-            padding-right: 15px;
-            padding-left: 15px;
-            -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
-            max-width: 100%;
-          }
           .error {
             color: red
           }
@@ -95,4 +77,4 @@ const mapStateToProps = ({SearchReducer, TokenReducer}) => {
   }
 }
 
-export default connect(mapStateToProps, { search, expiredToken })(Albums)
+export default connect(mapStateToProps, { search, expiredToken })(Search)
