@@ -5,7 +5,7 @@ export default ({ placeholder, label, change }) => (
   <div>
     <div className='page__section'>
       <label className='field field_type2'>
-        <Debounce time='400' handler='onChange'>
+        <Debounce time='500' handler='onChange'>
           <input
             className='field__input'
             placeholder={placeholder}

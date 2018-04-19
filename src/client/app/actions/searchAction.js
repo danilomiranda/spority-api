@@ -2,28 +2,30 @@ import { get } from '../lib/Http'
 import {
   SEARCH_SUCCESS,
   SEARCH_ERROR,
-  LOADING
+  LOADING,
+  EXPIRED_TOKEN
 } from './types'
 
-const search = query => {
+const search = ({query, token}) => {
   return function (dispatch) {
+    if (!query) {
+      dispatch({ type: SEARCH_SUCCESS, payload: {}, query })
+    }
     dispatch({ type: LOADING })
     const params = {
       q: query.replace(' ', '+'),
-      type: 'album'
+      type: 'album',
+      token
     }
     get('/search', params).then(response => {
-      console.log(response)
       dispatch({ type: SEARCH_SUCCESS, payload: response.data, query })
     })
       .catch((e) => {
-        if (e.status === 401) {
-          /* eslint-disable no-undef */
-          localStorage.removeItem('token')
-          /* eslint-enable no-undef */
+        console.log(e)
+        if (e.response.data.error.status === 401) {
+          dispatch({ type: EXPIRED_TOKEN })
         }
-        console.log('ERROR = ', e)
-        dispatch({ type: SEARCH_ERROR })
+        dispatch({ type: SEARCH_ERROR, payload: e })
       })
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import Input from './input'
+import {setToken} from '../actions/tokenAction'
 
 class Modal extends React.Component {
   constructor (props) {
@@ -18,28 +20,20 @@ class Modal extends React.Component {
   }
 
   change (token) {
-    /* eslint-disable no-undef */
-    localStorage.setItem('token', token)
-    /* eslint-enable no-undef */
-    this.setState({
-      show: false
-    })
+    this.props.setToken(token)
   }
 
   componentDidMount () {
-    /* eslint-disable no-undef */
-    const token = localStorage.getItem('token')
-    /* eslint-enable no-undef */
-    if (!token) {
+    if (this.props.token) {
       this.setState({
-        show: true
+        show: false
       })
     }
   }
 
   render () {
     return (
-      <div className={`modal ${this.state.show ? 'show' : ''}`}>
+      <div className={`modal ${!this.props.token ? 'show' : ''}`}>
         <div className='modal-header'>
           <span className='close' onClick={() => this.toggleModal()}>
             &times;
@@ -103,11 +97,10 @@ class Modal extends React.Component {
   }
 }
 
-
-const mapStateToProps = ({SearchReducer}) => {
+const mapStateToProps = ({TokenReducer}) => {
   return {
-    token: SearchReducer.token
+    token: TokenReducer.token
   }
 }
 
-export default connect(mapStateToProps, { search })(Modal)
+export default connect(mapStateToProps, { setToken })(Modal)

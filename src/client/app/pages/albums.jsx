@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import ReactLoading from 'react-loading'
 
 import Page from '../components/page'
 import Input from '../components/input'
 import Modal from '../components/modal'
-import { search } from '../actions'
+import { search, expiredToken } from '../actions'
 import Card from '../components/card'
 
 class Albums extends React.Component {
@@ -14,7 +15,7 @@ class Albums extends React.Component {
   }
 
   change (query) {
-    this.props.search(query)
+    this.props.search({query, token: this.props.token})
   }
 
   render () {
@@ -27,13 +28,27 @@ class Albums extends React.Component {
         />
         <div className='page__section'>
           <div className='row'>
-            <div className='col-12'>
-              <h2>{`Resultados encontrados para "${this.props.query}"`}</h2>
-            </div>
+            {this.props.loading ? (
+              <ReactLoading type='bubbles' color='#828282' />
+            ) : ''}
+            {this.props.error && this.props.query ? (
+              <div className='col-12'>
+                <h2 className='error'>{this.props.error.message}</h2>
+              </div>
+            ) : ''}
+            {this.props.albums ? (
+              <div className='col-12'>
+                <h2>{`Resultados encontrados para "${this.props.query}"`}</h2>
+              </div>
+            ) : (
+              <div className='col-12'>
+                <h2>{`Nenhum Resultado encontrado`}</h2>
+              </div>
+            )}
           </div>
           <div className='row'>
-            {this.props.albums.items ? this.props.albums.items.map(item => (
-              <Card key={item._id} {...item} />
+            {this.props.albums && this.props.albums.items ? this.props.albums.items.map(item => (
+              <Card key={item.id} {...item} />
             )) : ''}
           </div>
         </div>
@@ -60,19 +75,24 @@ class Albums extends React.Component {
             flex: 0 0 100%;
             max-width: 100%;
           }
-          
+          .error {
+            color: red
+          }
         `}</style>
       </Page>
     )
   }
 }
 
-const mapStateToProps = ({SearchReducer}) => {
+const mapStateToProps = ({SearchReducer, TokenReducer}) => {
   console.log('component albums -> ', SearchReducer)
   return {
     albums: SearchReducer.albums,
-    query: SearchReducer.query
+    loading: SearchReducer.loading,
+    error: SearchReducer.error,
+    query: SearchReducer.query,
+    token: TokenReducer.token
   }
 }
 
-export default connect(mapStateToProps, { search })(Albums)
+export default connect(mapStateToProps, { search, expiredToken })(Albums)
