@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "test": "standard && --watch --coverage"
+    "test": "standard && jest",
+    "test:watch": "standard && jest --watch --coverage"
   },
   "keywords": [],
   "author": "@danilomiranda",
