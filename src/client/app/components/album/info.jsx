@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default ({images, year, name}) => (
+/* eslint-disable-next-line camelcase  */
+export default ({images, release_date, name, artist}) => (
   <div className='album_info'>
     <div className='album_info_art'>
       <img
@@ -10,8 +11,10 @@ export default ({images, year, name}) => (
     </div>
 
     <div className='album_info_meta'>
-      <div className='album_year'>{year}</div>
+      {/* eslint-disable-next-line camelcase  */}
+      <div className='album_year'>{release_date}</div>
       <div className='album_name'>{name}</div>
+      <div className='album_artist'>{artist[0] ? artist[0].name : ''}</div>
     </div>
     <style jsx='true'>{`
       .album_info {
@@ -22,6 +25,16 @@ export default ({images, year, name}) => (
       .album_info_art img {
         width: 135px;
         height: 135px;
+        -webkit-transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -ms-transition: opacity .2s ease-in-out;
+        -o-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+      }
+      .album_info_art img:hover {
+        zoom: 1;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
       }
       .album_info_meta {
         width: calc( 100% - 150px);

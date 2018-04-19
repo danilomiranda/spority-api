@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import FontAwesome from 'react-fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft'
 
 import Page from '../components/page'
 import Info from '../components/album/info'
@@ -20,7 +21,7 @@ class Album extends React.Component {
     console.log('COMPONENTDIDMOUNT - > ', this.props)
     const id = this.props.match.params.id
     if (id) {
-      this.props.loadAlbum({id, token: this.props.token})
+      this.props.loadAlbum({ id, token: this.props.token })
     }
   }
 
@@ -29,17 +30,31 @@ class Album extends React.Component {
   }
 
   render () {
-    const { images = [], year = '', name = '', tracks = [] } = this.props.album
+    const {
+      images = [],
+      /* eslint-disable-next-line camelcase  */
+      release_date = '',
+      name = '',
+      artists = [],
+      tracks = []
+    } = this.props.album
     return (
       <Page>
         <Row>
           <Col size='12'>
-            <a href='#' onClick={this.goBack}>
-              <FontAwesome name='arrow-left' size='2x' /> Voltar</a>
+            <a href='#' onClick={this.goBack} className='back_button'>
+              <FontAwesomeIcon icon={faArrowLeft} /> Voltar
+            </a>
           </Col>
         </Row>
         <Row>
-          <Info images={images} year={year} name={name} />
+          <Info
+            images={images}
+            /* eslint-disable-next-line camelcase  */
+            release_date={release_date}
+            name={name}
+            artist={artists}
+          />
         </Row>
         <Row>
           <Col size='12'>
@@ -52,6 +67,10 @@ class Album extends React.Component {
         <style jsx='true'>{`
           .error {
             color: red;
+          }
+          .back_button {
+            color: FAFAFA;
+            text-decoration: none;
           }
         `}</style>
       </Page>

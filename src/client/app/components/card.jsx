@@ -2,13 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Col from '../components/col'
 
-const Card = ({ id, name, images }) => (
+const Card = ({id, name, images, artists}) => (
   <Col size='2'>
     <div className='media-object'>
       <div className='media-object-hoverable'>
         <div className='image-wrapper'>
           {images[1] ? (
-            <img className='cover-art-image' src={images[1].url} />
+            <Link
+              to={`/album/${id}`}
+              className='mo-info-name'
+              title='Brazilian Pop'
+            >
+              <img className='cover-art-image' src={images[1].url} />
+            </Link>
           ) : (
             <img className='cover-art-image' src='http://via.placeholder.com/188x188' />
           )}
@@ -25,9 +31,9 @@ const Card = ({ id, name, images }) => (
           </div>
         </div>
       </div>
-      <div className='mo-meta ellipsis-one-line'>
+      <div className='mo-meta'>
         <div className='react-contextmenu-wrapper'>
-          <a href='/artist/2K13AVg3bFpHSxDM1vJ0qA' />
+          {artists.length > 1 || artists[0].name}
         </div>
       </div>
     </div>
@@ -48,6 +54,16 @@ const Card = ({ id, name, images }) => (
         background-size: cover!important;
         background-position: 50%;
         opacity: 1;
+        -webkit-transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -ms-transition: opacity .2s ease-in-out;
+        -o-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+      }
+      .cover-art-image:hover {
+        zoom: 1;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
       }
       .image-wrapper {
         width: 188px;
@@ -81,6 +97,18 @@ const Card = ({ id, name, images }) => (
       }
       .media-object a {
         border-bottom-width: 0;
+        text-decoration: none;
+      }
+      .mo-meta {
+        margin: 12px 0 4px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     `}</style>
   </Col>

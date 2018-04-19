@@ -1,4 +1,6 @@
 import React from 'react'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faClock from '@fortawesome/fontawesome-free-solid/faClock'
 
 import milesecondsToTime from '../../lib/toTime'
 
@@ -11,13 +13,13 @@ export default ({ tracks = [] }) => (
         <div className='tracks_heading_title'>Song</div>
 
         <div className='tracks_heading_length'>
-          <i className='ion-ios-stopwatch-outline' />
+          <FontAwesomeIcon icon={faClock} />
         </div>
       </div>
       {/* eslint-disable-next-line camelcase  */}
-      {tracks.map(({name, explicit, duration_ms}) => (
+      {tracks.map(({name, explicit, duration_ms}, i) => (
         <div className='track'>
-          <div className='track_number'>1</div>
+          <div className='track_number'>{i + 1}</div>
 
           <div className='track_added'>
             <i className='ion-checkmark-round added' />
@@ -41,6 +43,12 @@ export default ({ tracks = [] }) => (
         flex-flow: column wrap;
         margin-bottom: 15px;
       }
+      .tracks .track:hover {
+        background: #282828;
+      }
+      .tracks .track:last-child {
+        border-bottom: 1px solid #282828;
+      }
       .tracks_heading {
         color: #aaaaaa;
         height: 42px;
@@ -53,13 +61,14 @@ export default ({ tracks = [] }) => (
         font-style: italic;
       }
       .tracks_heading_title {
-        margin-left: 70px;
+        margin-left: 30px;
         width: 45%;
         text-transform: uppercase;
         letter-spacing: 1px;
       }
       .tracks_heading_length {
         margin-left: auto;
+        margin-right: 30px;
         font-size: 20px;
       }
       .tracks .track {
@@ -80,6 +89,7 @@ export default ({ tracks = [] }) => (
       }
       .track .track_title {
         width: 80%;
+        color: #FAFAFA
       }
       .tracks .track_explicit .label {
         border: 1px;
@@ -102,6 +112,7 @@ export default ({ tracks = [] }) => (
     }
     .tracks .track_length {
       margin-left: auto;
+      margin-right: 20px;
       color: #aaaaaa;
     }
     `}</style>
