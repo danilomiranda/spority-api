@@ -13,10 +13,17 @@ exports[`renders correctly 1`] = `
       <div
         className="image-wrapper"
       >
-        <img
-          className="cover-art-image"
-          src="https://i.scdn.co/image/ec9b711714a557bb60e4785cdf718f446691a798"
-        />
+        <a
+          className="mo-info-name"
+          href="/album/3Rvw51S5aB7G87bLz5hw1t"
+          onClick={[Function]}
+          title="Brazilian Pop"
+        >
+          <img
+            className="cover-art-image"
+            src="https://i.scdn.co/image/ec9b711714a557bb60e4785cdf718f446691a798"
+          />
+        </a>
       </div>
       <div
         className="mo-info"
@@ -36,14 +43,12 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="mo-meta ellipsis-one-line"
+      className="mo-meta"
     >
       <div
         className="react-contextmenu-wrapper"
       >
-        <a
-          href="/artist/2K13AVg3bFpHSxDM1vJ0qA"
-        />
+        Ratos de Porão
       </div>
     </div>
   </div>
@@ -67,6 +72,16 @@ exports[`renders correctly 1`] = `
         background-size: cover!important;
         background-position: 50%;
         opacity: 1;
+        -webkit-transition: opacity .2s ease-in-out;
+        -moz-transition: opacity .2s ease-in-out;
+        -ms-transition: opacity .2s ease-in-out;
+        -o-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+      }
+      .cover-art-image:hover {
+        zoom: 1;
+        filter: alpha(opacity=50);
+        opacity: 0.5;
       }
       .image-wrapper {
         width: 188px;
@@ -100,6 +115,18 @@ exports[`renders correctly 1`] = `
       }
       .media-object a {
         border-bottom-width: 0;
+        text-decoration: none;
+      }
+      .mo-meta {
+        margin: 12px 0 4px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     
   </style>

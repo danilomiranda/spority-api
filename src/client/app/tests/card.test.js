@@ -33,6 +33,9 @@ it('renders correctly', () => {
                   'https://i.scdn.co/image/27ae3aefe740b161a6baeb5450126be585b3cc77',
                 width: 64
               }
+            ],
+            artists: [
+              {id: '3U3MgrE0FDn7zspykp0uOt', name: 'Ratos de Porão', type: 'artist'}
             ]
           }}
         />
